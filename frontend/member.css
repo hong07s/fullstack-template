@@ -1,0 +1,520 @@
+/* =========================================================
+   member.css —— 项目成员首页
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    font-family: "Microsoft YaHei", -apple-system, "Segoe UI", sans-serif;
+    background: #f0f2f5;
+    color: #303133;
+    min-height: 100vh;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* ---------- 顶栏 ---------- */
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 64px;
+    padding: 0 24px;
+    background: #fff;
+    border-bottom: 1px solid #e4e7ed;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background: #409eff;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.brand-name {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: .2px;
+}
+
+.topbar-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.project-tag {
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: #ecf5ff;
+    color: #409eff;
+    font-size: 13px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #409eff, #2f7ad6);
+    color: #fff;
+    font-size: 13px;
+}
+
+.role-badge {
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #f4f4f5;
+    color: #909399;
+    font-size: 12px;
+}
+
+/* ---------- 通用按钮 ---------- */
+
+.btn {
+    height: 36px;
+    padding: 0 16px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: background .15s, border-color .15s, color .15s;
+}
+
+.btn-primary {
+    background: #409eff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #337ecc;
+}
+
+.btn-ghost {
+    background: transparent;
+    border-color: #dcdfe6;
+    color: #606266;
+}
+
+.btn-ghost:hover {
+    background: #f5f7fa;
+    border-color: #c0c4cc;
+}
+
+/* ---------- 内容区 ---------- */
+
+.container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+}
+
+.page-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.page-head h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.subtitle {
+    margin-top: 6px;
+    color: #909399;
+    font-size: 13px;
+}
+
+.demo-badge {
+    padding: 4px 10px;
+    border: 1px dashed #e6a23c;
+    border-radius: 6px;
+    color: #e6a23c;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* ---------- 经费卡片 ---------- */
+
+.budget-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.budget-card {
+    position: relative;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e4e7ed;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow .2s, transform .2s;
+}
+
+.budget-card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+    transform: translateY(-1px);
+}
+
+.budget-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: #c0c4cc;
+}
+
+.card-available::before { background: #67c23a; }
+.card-frozen::before    { background: #e6a23c; }
+.card-used::before      { background: #409eff; }
+
+.budget-label {
+    color: #909399;
+    font-size: 13px;
+}
+
+.budget-value {
+    margin-top: 10px;
+    font-size: 27px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: .5px;
+}
+
+.budget-value::before {
+    content: "¥";
+    margin-right: 4px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #909399;
+}
+
+.card-available .budget-value { color: #529b2e; }
+.card-frozen .budget-value    { color: #b88230; }
+.card-used .budget-value      { color: #337ecc; }
+
+/* ---------- 经费构成条 ---------- */
+
+.budget-bar {
+    display: flex;
+    height: 10px;
+    margin: 12px 0 0;
+    border-radius: 999px;
+    background: #ebeef5;
+    overflow: hidden;
+}
+
+.budget-bar span {
+    height: 100%;
+    transition: width .3s;
+}
+
+.bar-available { background: #67c23a; }
+.bar-frozen    { background: #e6a23c; }
+.bar-used      { background: #409eff; }
+
+/* ---------- 申请列表 ---------- */
+
+.panel {
+    margin-top: 28px;
+    background: #fff;
+    border: 1px solid #e4e7ed;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 24px;
+    border-bottom: 1px solid #ebeef5;
+}
+
+.panel-head h2 {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+.app-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.app-table th {
+    padding: 12px 16px;
+    background: #fafafa;
+    color: #909399;
+    font-weight: 500;
+    font-size: 13px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.app-table td {
+    padding: 14px 16px;
+    border-top: 1px solid #f0f2f5;
+    vertical-align: middle;
+}
+
+.app-table tbody tr:hover {
+    background: #fafcff;
+}
+
+.app-table .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.app-table td.purpose {
+    min-width: 160px;
+}
+
+.muted {
+    color: #c0c4cc;
+}
+
+/* ---------- 状态标签 ---------- */
+
+.badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.badge-draft    { background: #f4f4f5; color: #909399; }
+.badge-pending  { background: #fdf6ec; color: #e6a23c; }
+.badge-approved { background: #ecf5ff; color: #409eff; }
+.badge-rejected { background: #fef0f0; color: #f56c6c; }
+.badge-canceled { background: #f4f4f5; color: #909399; }
+.badge-settled  { background: #f0f9eb; color: #67c23a; }
+
+/* ---------- 操作按钮 ---------- */
+
+.link-btn {
+    padding: 0;
+    margin-right: 12px;
+    border: none;
+    background: none;
+    color: #409eff;
+    font-size: 14px;
+}
+
+.link-btn:hover {
+    text-decoration: underline;
+}
+
+.link-btn.danger {
+    color: #f56c6c;
+}
+
+/* ---------- 空状态 ---------- */
+
+.empty {
+    padding: 48px 24px;
+    color: #909399;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* ---------- 弹窗 ---------- */
+
+.modal-mask {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, .45);
+}
+
+.modal {
+    width: 100%;
+    max-width: 420px;
+    padding: 24px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .18);
+    animation: modal-in .16s ease-out;
+}
+
+@keyframes modal-in {
+    from { opacity: 0; transform: translateY(8px) scale(.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal h3 {
+    margin-bottom: 18px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.field {
+    margin-bottom: 16px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 6px;
+    color: #606266;
+    font-size: 13px;
+}
+
+.field textarea,
+.field input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #dcdfe6;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #303133;
+    resize: vertical;
+    transition: border-color .15s, box-shadow .15s;
+}
+
+.field textarea:focus,
+.field input:focus {
+    outline: none;
+    border-color: #409eff;
+    box-shadow: 0 0 0 3px rgba(64, 158, 255, .12);
+}
+
+.hint {
+    margin-top: 6px;
+    color: #a8abb2;
+    font-size: 12px;
+}
+
+.form-error {
+    min-height: 20px;
+    margin-bottom: 12px;
+    color: #f56c6c;
+    font-size: 13px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* ---------- 提示条 ---------- */
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 32px;
+    z-index: 200;
+    max-width: min(520px, calc(100vw - 40px));
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: rgba(48, 49, 51, .92);
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0;
+    transform: translate(-50%, 12px);
+    pointer-events: none;
+    transition: opacity .2s, transform .2s;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* ---------- 窄屏 ---------- */
+
+@media (max-width: 860px) {
+    .budget-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .topbar {
+        height: auto;
+        flex-wrap: wrap;
+        padding: 12px 16px;
+    }
+
+    .topbar-info {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    .project-tag {
+        display: none;
+    }
+
+    .container {
+        padding: 24px 16px 48px;
+    }
+
+    .budget-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .budget-value {
+        font-size: 24px;
+    }
+
+    .panel-head {
+        padding: 16px;
+    }
+}

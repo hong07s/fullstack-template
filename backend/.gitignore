@@ -7,3 +7,11 @@ build/
 # 本地运行日志
 logs/
 *.log
+
+# Python 本地缓存
+__pycache__/
+*.pyc
+
+# 本地数据库文件
+*.db
+

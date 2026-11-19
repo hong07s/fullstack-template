@@ -23,8 +23,11 @@ class LoginBody(BaseModel):
 
 @app.post("/login")
 def login(body: LoginBody):
-    test_user = "admin"
-    test_pwd = "123456"
+    
+    user = dbfind(body.username)
+    
+    test_user = user[1]
+    test_pwd = user[2]
 
     if body.username == test_user and body.password == test_pwd:
         return {

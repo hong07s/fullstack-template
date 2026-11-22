@@ -1,5 +1,5 @@
 <template>
-    <button class="register-btn" type="button" @click="gotosignup">注册</button>
+    <button class="register-btn" type="button" @click="gotoregister">注册</button>
     <h1>{{ title }}</h1>
 
     <h3 class="h3-login">用户名</h3>
@@ -15,6 +15,11 @@
 <script setup>
     import {ref} from "vue"
     import axios from "axios"
+    import { useRouter } from "vue-router";
+
+    const router = useRouter()
+
+    // const emit = defineEmits(['go-register'])
 
     const title = ref("校园管理经费系统登录")
 
@@ -23,9 +28,9 @@
 
     const resData = ref(null)
 
-    // function gotosignup(){
-    //     title.value = 
-    // }
+    function gotoregister(){
+        router.push('/register')
+    }
 
     // 登录
     async function postData(){

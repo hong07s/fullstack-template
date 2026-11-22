@@ -2,10 +2,12 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-import sqlite3
+from myDb import dbfind, init_db
+init_db()
 
 app = FastAPI()
 
+# 允许跨域
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -14,20 +16,19 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# connection = sqlite3.connect("database.db")
-# cursor = connection.cursor()
 
 class LoginBody(BaseModel):
     username: str
     password: str
 
+
 @app.post("/login")
 def login(body: LoginBody):
     
     user = dbfind(body.username)
-    
-    test_user = user[1]
-    test_pwd = user[2]
+
+    test_user = user[1] # username
+    test_pwd = user[2] # password
 
     if body.username == test_user and body.password == test_pwd:
         return {

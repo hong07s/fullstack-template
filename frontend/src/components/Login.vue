@@ -28,31 +28,51 @@
 
     const resData = ref(null)
 
+    const roleRoutes = {
+        Admin: '/admin',
+        Member: '/member',
+        Teacher: '/teacher',
+        Finance: '/finance'
+    }
+
     function gotoregister(){
         router.push('/register')
     }
 
     // 登录
     async function postData(){
-        if ( !username.value.trim() && !password.value.trim() ){
+        if ( !username.value.trim() ){
             alert("用户名不能为空")
+            return
         }
-        else if ( !password.value.trim() ){
+        if ( !password.value.trim() ){
             alert("请输入密码")
+            return
         }
-        else {
-            try {
-                const user = {
-                    "username": username.value,
-                    "password": password.value
-                }
-                const resp = await axios.post("http://127.0.0.1:8000/login", user)
-                resData.value = resp.data
-                console.log("返回结果：", resp.data)
-                return user
-            } catch(e) {
-                console.error(e)
+
+        try {
+            const resp = await axios.post("http://127.0.0.1:8000/login", {
+                username: username.value,
+                password: password.value
+            })
+            const data = resp.data
+            console.log("返回结果：", data)
+
+            if (data.code !== 200) {
+                alert(data.msg || "登录失败")
+                return
             }
+
+            const target = roleRoutes[data.role]
+            if (!target) {
+                alert("未知角色：" + data.role)
+                return
+            }
+
+            router.push(target)
+        } catch(e) {
+            console.error(e)
+            alert("请求失败，请确认后端已启动")
         }
     }
 

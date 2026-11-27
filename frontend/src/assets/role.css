@@ -1,0 +1,151 @@
+/* 角色页面共用样式 */
+.role-page {
+  padding: 24px 32px 56px;
+  text-align: left;
+}
+
+.role-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.role-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #08060d;
+  margin: 0;
+}
+
+.role-sub {
+  color: #6b6375;
+  font-size: 14px;
+  margin: 4px 0 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.card {
+  border: 1px solid #e5e4e7;
+  border-radius: 10px;
+  padding: 16px;
+  background: #fff;
+}
+
+.card-label {
+  font-size: 13px;
+  color: #6b6375;
+  margin: 0 0 6px;
+}
+
+.card-value {
+  font-size: 24px;
+  font-weight: 600;
+  color: #08060d;
+  margin: 0;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: #08060d;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #e5e4e7;
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.table th,
+.table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #f0eff2;
+}
+
+.table th {
+  background: #faf9fb;
+  color: #6b6375;
+  font-weight: 500;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.tag-pending {
+  background: #fff4e5;
+  color: #a05a00;
+}
+
+.tag-approved {
+  background: #e8f6ee;
+  color: #127a43;
+}
+
+.tag-done {
+  background: #eef0f4;
+  color: #4a5568;
+}
+
+.btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: #aa3bff;
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #9333ea;
+}
+
+.btn-ghost {
+  background: #fff;
+  color: #aa3bff;
+  border-color: #d7bdfa;
+}
+
+.btn-ghost:hover {
+  background: #f6efff;
+}
+
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+.btn + .btn {
+  margin-left: 6px;
+}
+
+.empty {
+  color: #9ca3af;
+  font-size: 14px;
+  padding: 16px;
+  border: 1px dashed #e5e4e7;
+  border-radius: 10px;
+}

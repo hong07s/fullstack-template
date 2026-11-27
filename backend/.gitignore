@@ -12,6 +12,10 @@ logs/
 __pycache__/
 *.pyc
 
+# Python 虚拟环境
+.venv/
+venv/
+
 # 本地数据库文件
 *.db
 

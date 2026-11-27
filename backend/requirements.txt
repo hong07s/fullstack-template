@@ -1,0 +1,4 @@
+# Backend runtime dependencies.
+# Versions match the environment currently installed locally.
+fastapi==0.163.2
+uvicorn==0.54.0

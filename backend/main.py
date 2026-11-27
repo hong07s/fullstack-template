@@ -24,23 +24,20 @@ class LoginBody(BaseModel):
 
 @app.post("/login")
 def login(body: LoginBody):
-    
+
     user = dbfind(body.username)
 
-    test_user = user[1] # username
-    test_pwd = user[2] # password
-
-    if body.username == test_user and body.password == test_pwd:
-        return {
-            "code": 200,
-            "msg": "登录成功",
-            "url": "member.html"  # 登录成功后跳转到前端同目录的 member.html
-        }
-    else:
+    if user is None or body.password != user["password"]:
         return {
             "code": 400,
             "msg": "账号或密码错误"
         }
+
+    return {
+        "code": 200,
+        "msg": "登录成功",
+        "role": user["role"]
+    }
 
 
 if __name__ == "__main__":

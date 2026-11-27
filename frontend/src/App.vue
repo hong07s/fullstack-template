@@ -2,12 +2,12 @@
   import { ref } from 'vue'
   import Login from './components/Login.vue'
   import Register from './components/Register.vue'
+  import Member from './components/Member.vue';
+  import Finance from './components/Finance.vue'
+  import Admin from './components/Admin.vue'
 
-  const page = ref("login")
 </script>
 
 <template>
-  <!-- <Login v-if="page == 'login'" @go-register="page = 'register'"/>
-  <Register v-else @go-login="page = 'login'" /> -->
   <RouterView />
 </template>
